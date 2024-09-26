@@ -23,7 +23,7 @@ export default function HomeScreen() {
         numColumns={2}
         ListHeaderComponent={() => (
           <YStack>
-            <H5 ta="center" mb={16}>
+            <H5 ta="center" mb={16} mt={8}>
               Browse our top styles
             </H5>
 

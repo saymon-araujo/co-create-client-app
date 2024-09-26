@@ -65,7 +65,7 @@ export function ProductListItem({ product, index }: Props) {
 
         <View flex={1} mx={16} my={8}>
           <H5 fontWeight={"bold"}>{product.artist.name}</H5>
-          <Text fontSize={"12"}>
+          <Text fontSize={12}>
             {formatCentsToDollars(product.priceInCents)} <Text color={"gray"}>| BUY NOW</Text>
           </Text>
         </View>

@@ -8,6 +8,7 @@ import "react-native-reanimated";
 import { TamaguiProvider } from "tamagui";
 import { tamaguiConfig } from "../tamagui.config";
 import { useColorScheme } from "@/hooks/useColorScheme";
+import { AppProvider } from "@/hooks";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -31,10 +32,13 @@ export default function RootLayout() {
   return (
     <TamaguiProvider config={tamaguiConfig} defaultTheme={colorScheme!}>
       <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-        <Stack>
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen name="+not-found" />
-        </Stack>
+        <AppProvider>
+          <Stack>
+            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            <Stack.Screen name="productDetail" options={{ headerShown: false }} />
+            <Stack.Screen name="+not-found" />
+          </Stack>
+        </AppProvider>
       </ThemeProvider>
     </TamaguiProvider>
   );

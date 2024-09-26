@@ -30,6 +30,7 @@ export const mockFilters: FilterOptionsProps[] = [
 
 export const mockProducts: ProductProps[] = [
   {
+    id: "1",
     title: "Deadly Moth",
     description:
       "This tattoo is representing that you can find beauty everywhere, sometimes even in death",
@@ -45,6 +46,7 @@ export const mockProducts: ProductProps[] = [
       "https://wmciapwndxhbupdywzet.supabase.co/storage/v1/render/image/public/assets/tattoos/86e868fd-9936-4f71-be2c-1632b55b1523/2ef83d50-7cae-41d4-806c-d5b80250b6c4.png?width=1080&quality=75&resize=contain",
   },
   {
+    id: "2",
     title: "Hopeless Romantic",
     description:
       "This tattoo is inspired by neo traditional and art Deco styles representing the female beauty.",
@@ -60,6 +62,7 @@ export const mockProducts: ProductProps[] = [
       "https://wmciapwndxhbupdywzet.supabase.co/storage/v1/render/image/public/assets/tattoos/86e868fd-9936-4f71-be2c-1632b55b1523/0eca7f08-5ba1-4450-8ba0-378b4e171803.png?width=1080&quality=75&resize=contain",
   },
   {
+    id: "3",
     title: "Lamarr Muerte",
     description:
       "Hedy Lamarr (old classic Hollywood actress) with decorative lines on her face resembling Dia le dos muertos makeup. Can be exchanged for another classic black and white imagery from a film. Makeup/ lines can be altered, this is just a concept.",
@@ -75,6 +78,7 @@ export const mockProducts: ProductProps[] = [
       "https://wmciapwndxhbupdywzet.supabase.co/storage/v1/render/image/public/assets/tattoos/fb43ece7-f0c1-4a69-aeee-f5d77f404b26/dffabc3c-8128-4fc4-9d69-b7c5d6c10031.jpg?width=1080&quality=75&resize=contain",
   },
   {
+    id: "4",
     title: "AXXXLION",
     description:
       "Realistic Tattoo design for outher thigh, upper arm, underarm, calf. The price includes a two-days-appointment necessary for the realization of this tattoo.",

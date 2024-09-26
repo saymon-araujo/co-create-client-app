@@ -1,6 +1,8 @@
 import { screen } from "@/constants/screen";
+import { useCart } from "@/hooks/cart";
 import { formatCentsToDollars } from "@/utils/formatCentsToDollars";
 import { Image } from "expo-image";
+import { useRouter } from "expo-router";
 import React from "react";
 import { TouchableOpacity } from "react-native";
 import { H5, Text, View } from "tamagui";
@@ -11,6 +13,7 @@ interface Props {
 }
 
 export interface ProductProps {
+  id: string;
   title: string;
   description: string;
   priceInCents: number;
@@ -31,7 +34,13 @@ const imageHeight = screen.height * 0.28;
 export const productContainerHeight = imageHeight + screen.width * 0.1;
 
 export function ProductListItem({ product, index }: Props) {
-  function handleGoToProductPage() {}
+  const router = useRouter();
+  const { handleSetCurrentProduct } = useCart();
+
+  function handleGoToProductPage() {
+    handleSetCurrentProduct(product);
+    router.push({ pathname: "/productDetail", params: { productId: product.id } });
+  }
 
   return (
     <TouchableOpacity onPress={handleGoToProductPage}>

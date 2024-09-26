@@ -1,75 +1,70 @@
-import { Image, StyleSheet, Platform } from "react-native";
+import React, { useState } from "react";
 
-import { HelloWave } from "@/components/HelloWave";
-import ParallaxScrollView from "@/components/ParallaxScrollView";
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
-import { Paragraph } from "tamagui";
+import { getToken, getTokens, H5, Paragraph, Text, View, XStack } from "tamagui";
+import { Header } from "@/components";
+import { OptionsProps, QuickFilterCarousel } from "@/components/compound/QuickFiltersCarousel";
+import { SlidersHorizontal } from "lucide-react-native";
+
+const mockCategories: OptionsProps[] = [
+  {
+    imageUrl:
+      "https://wmciapwndxhbupdywzet.supabase.co/storage/v1/render/image/public/assets/top_styles/botanical.jpg?width=64&quality=100&resize=contain",
+    title: "Botanical",
+    value: "botanical",
+  },
+  {
+    imageUrl:
+      "https://wmciapwndxhbupdywzet.supabase.co/storage/v1/render/image/public/assets/top_styles/surrealism.jpg?width=64&quality=100&resize=contain",
+    title: "Surrealism",
+    value: "surrealism",
+  },
+  {
+    imageUrl:
+      "https://wmciapwndxhbupdywzet.supabase.co/storage/v1/render/image/public/assets/top_styles/black_work.jpg?width=64&quality=100&resize=contain",
+    title: "Blackwork",
+    value: "blackwork",
+  },
+  {
+    imageUrl:
+      "https://wmciapwndxhbupdywzet.supabase.co/storage/v1/render/image/public/assets/top_styles/geometric.jpg?width=64&quality=75&resize=contain",
+    title: "Geometric",
+    value: "geometric",
+  },
+];
 
 export default function HomeScreen() {
+  const [selectedFilter, setSelectedFilter] = useState<string>("");
+
+  const colors = getTokens().color;
+
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}
-      headerImage={
-        <Image
-          source={require("@/assets/images/partial-react-logo.png")}
-          style={styles.reactLogo}
-        />
-      }
-    >
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <Paragraph fos="$5" ta="center">
-          Testing Tamagui
-        </Paragraph>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{" "}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({ ios: "cmd + d", android: "cmd + m" })}
-          </ThemedText>{" "}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{" "}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{" "}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{" "}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{" "}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+    <View bg={"$white1"}>
+      <Header />
+
+      <H5 ta="center" mb={16}>
+        Browse our top styles
+      </H5>
+
+      <QuickFilterCarousel
+        categories={mockCategories}
+        selectedFilter={selectedFilter}
+        setSelectedFilter={setSelectedFilter}
+      />
+
+      <XStack alignItems="center" justifyContent="center" gap={8} my={16}>
+        <View
+          borderWidth={1}
+          px={8}
+          py={4}
+          borderRadius={120}
+          alignItems="center"
+          justifyContent="center"
+        >
+          <Text>{!!selectedFilter ? "1" : "0"}</Text>
+        </View>
+        <Paragraph letterSpacing={2}>FILTERS</Paragraph>
+        <SlidersHorizontal color={"#000"} size={16} />
+      </XStack>
+    </View>
   );
 }
-
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: "absolute",
-  },
-});

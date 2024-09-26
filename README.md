@@ -19,10 +19,10 @@
 
 
 <div align="center">
- <img alt="ScreenShot1" title="#screenshot1" src="./assets/images/screenshot1.png"  />&nbsp;&nbsp;&nbsp;&nbsp;
- <img alt="ScreenShot2" title="#screenshot2" src="./assets/images/screenshot2.png"  />&nbsp;&nbsp;&nbsp;&nbsp;
- <img alt="ScreenShot3" title="#screenshot3" src="./assets/images/screenshot3.png"  />&nbsp;&nbsp;&nbsp;&nbsp;
- <img alt="ScreenShot4" title="#screenshot4" src="./assets/images/screenshot4.png"  />&nbsp;&nbsp;&nbsp;&nbsp;
+ <img alt="ScreenShot1" title="#screenshot1" src="./assets/images/screenshot1.jpeg"  />&nbsp;&nbsp;&nbsp;&nbsp;
+ <img alt="ScreenShot2" title="#screenshot2" src="./assets/images/screenshot2.jpeg"  />&nbsp;&nbsp;&nbsp;&nbsp;
+ <img alt="ScreenShot3" title="#screenshot3" src="./assets/images/screenshot3.jpeg"  />&nbsp;&nbsp;&nbsp;&nbsp;
+ <img alt="ScreenShot4" title="#screenshot4" src="./assets/images/screenshot4.jpeg"  />&nbsp;&nbsp;&nbsp;&nbsp;
 </div>
 
 

@@ -8,11 +8,12 @@ import { useRouter } from "expo-router";
 
 interface Props {
   goBack?: boolean;
+  alternativeGoBackBehavior?: () => void;
   step?: 1 | 2 | 3;
   initialTime?: number;
 }
 
-export function Header({ goBack, step, initialTime = 300 }: Props) {
+export function Header({ goBack, alternativeGoBackBehavior, step, initialTime = 300 }: Props) {
   const router = useRouter();
   const imageSizeMultiplier = 0.09;
 
@@ -21,7 +22,7 @@ export function Header({ goBack, step, initialTime = 300 }: Props) {
 
   const handleGoBack = useCallback(() => {
     if (goBack) {
-      router.back();
+      alternativeGoBackBehavior ? alternativeGoBackBehavior() : router.back();
     }
   }, [goBack, router]);
 

@@ -18,7 +18,7 @@
 <p>This app was developed in 8 hours as a gift for the Co:Create Ink team. It reflects my expertise in building cross-platform mobile applications using modern technologies such as Expo, React Native, and Tamagui. This project aims to demonstrate how my technical skills can contribute to Co:Create's mission of merging technology with artistry in the tattoo industry.</p>
 
 
-<div align="center" style="display: flex; justify-content: center; flex-wrap: wrap;">
+<div align="center" style="display: flex; justify-content: center;">
  <img alt="ScreenShot1" title="#screenshot1" src="./assets/images/screenshot1.jpeg" width="200" />&nbsp;&nbsp;&nbsp;&nbsp;
  <img alt="ScreenShot2" title="#screenshot2" src="./assets/images/screenshot2.jpeg" width="200" />&nbsp;&nbsp;&nbsp;&nbsp;
  <img alt="ScreenShot3" title="#screenshot3" src="./assets/images/screenshot3.jpeg" width="200" />&nbsp;&nbsp;&nbsp;&nbsp;

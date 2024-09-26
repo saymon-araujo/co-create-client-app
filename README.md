@@ -19,10 +19,10 @@
 
 
 <div align="center" style="display: flex; justify-content: center; flex-wrap: wrap;">
- <img alt="ScreenShot1" title="#screenshot1" src="./assets/images/screenshot1.jpeg" width="200" style="margin: 10px;" />&nbsp;&nbsp;&nbsp;&nbsp;
- <img alt="ScreenShot2" title="#screenshot2" src="./assets/images/screenshot2.jpeg" width="200" style="margin: 10px;" />&nbsp;&nbsp;&nbsp;&nbsp;
- <img alt="ScreenShot3" title="#screenshot3" src="./assets/images/screenshot3.jpeg" width="200" style="margin: 10px;" />&nbsp;&nbsp;&nbsp;&nbsp;
- <img alt="ScreenShot4" title="#screenshot4" src="./assets/images/screenshot4.jpeg" width="200" style="margin: 10px;" />&nbsp;&nbsp;&nbsp;&nbsp;
+ <img alt="ScreenShot1" title="#screenshot1" src="./assets/images/screenshot1.jpeg" width="200" />&nbsp;&nbsp;&nbsp;&nbsp;
+ <img alt="ScreenShot2" title="#screenshot2" src="./assets/images/screenshot2.jpeg" width="200" />&nbsp;&nbsp;&nbsp;&nbsp;
+ <img alt="ScreenShot3" title="#screenshot3" src="./assets/images/screenshot3.jpeg" width="200" />&nbsp;&nbsp;&nbsp;&nbsp;
+ <img alt="ScreenShot4" title="#screenshot4" src="./assets/images/screenshot4.jpeg" width="200" />&nbsp;&nbsp;&nbsp;&nbsp;
 </div>
 
 

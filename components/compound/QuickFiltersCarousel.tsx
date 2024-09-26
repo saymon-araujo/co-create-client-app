@@ -4,12 +4,12 @@ import { Button, Text } from "tamagui";
 import { Image } from "expo-image";
 
 interface Props {
-  categories: OptionsProps[];
+  categories: FilterOptionsProps[];
   selectedFilter: string;
   setSelectedFilter: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export interface OptionsProps {
+export interface FilterOptionsProps {
   title: string;
   value: string;
   imageUrl: string;
@@ -24,7 +24,7 @@ export function QuickFilterCarousel({ categories, selectedFilter, setSelectedFil
   );
 
   const renderItem = useCallback(
-    ({ item }: { item: OptionsProps }) => (
+    ({ item }: { item: FilterOptionsProps }) => (
       <Button
         onPress={() => setSelectedFilter(item.value)}
         bg={isCategorySelected(item.value) ? "$black1" : "$white1"}

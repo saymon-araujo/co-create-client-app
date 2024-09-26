@@ -41,7 +41,8 @@
     "react-native-svg": "^15.7.1",
     "react-native-web": "~0.19.10",
     "rn-iphone-helper": "^2.0.4",
-    "tamagui": "^1.112.0"
+    "tamagui": "^1.112.0",
+    "@shopify/flash-list": "1.6.4"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

@@ -2,18 +2,17 @@ import React, { useEffect, useState, useCallback, useRef, useMemo } from "react"
 import { screen } from "@/constants/screen";
 import { Text, View, XStack } from "tamagui";
 import { Image } from "expo-image";
-import { ArrowLeft } from "lucide-react-native";
+import { ArrowLeft, X } from "lucide-react-native";
 import { TouchableOpacity } from "react-native";
 import { useRouter } from "expo-router";
 
 interface Props {
   goBack?: boolean;
-  alternativeGoBackBehavior?: () => void;
   step?: 1 | 2 | 3;
   initialTime?: number;
 }
 
-export function Header({ goBack, alternativeGoBackBehavior, step, initialTime = 300 }: Props) {
+export function Header({ goBack, step, initialTime = 300 }: Props) {
   const router = useRouter();
   const imageSizeMultiplier = 0.09;
 
@@ -22,7 +21,7 @@ export function Header({ goBack, alternativeGoBackBehavior, step, initialTime = 
 
   const handleGoBack = useCallback(() => {
     if (goBack) {
-      alternativeGoBackBehavior ? alternativeGoBackBehavior() : router.back();
+      router.back();
     }
   }, [goBack, router]);
 
@@ -76,7 +75,7 @@ export function Header({ goBack, alternativeGoBackBehavior, step, initialTime = 
               onPress={handleGoBack}
               hitSlop={{ bottom: 8, left: 8, right: 8, top: 8 }}
             >
-              <ArrowLeft color={"#000"} />
+              {!!step ? <X color={"#000"} /> : <ArrowLeft color={"#000"} />}
             </TouchableOpacity>
           )}
 

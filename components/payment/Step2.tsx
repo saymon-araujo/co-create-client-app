@@ -1,8 +1,9 @@
+import { screen } from "@/constants/screen";
 import { useCart } from "@/hooks/cart";
 import { addDays, format } from "date-fns";
 import React, { useState } from "react";
 import { Calendar, DateData } from "react-native-calendars";
-import { H2, Input, Label, Paragraph, ScrollView, Text, YStack } from "tamagui";
+import { H2, Input, Label, Paragraph, ScrollView, Text, TextArea, YStack } from "tamagui";
 
 export function Step2() {
   const { currentProduct } = useCart();
@@ -88,6 +89,27 @@ export function Step2() {
         disableMonthChange={true}
         enableSwipeMonths={true}
       />
+
+      <YStack mt={16}>
+        <TextArea
+          w={"100%"}
+          placeholder={
+            "Any additional details you'd like the artist to consider, such as travel plans or preferred days of the week."
+          }
+          borderRadius={0}
+          bg={"$white1"}
+          borderColor={"$gray7"}
+          borderLeftColor={"$white1"}
+          borderRightColor={"$white1"}
+          multiline={true}
+          h={screen.height * 0.15}
+          mb={32}
+          pt={32}
+        />
+        <Label position="absolute" top={-2} left={16} fontSize={12} letterSpacing={1.6}>
+          NOTES
+        </Label>
+      </YStack>
     </ScrollView>
   );
 }

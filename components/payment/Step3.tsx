@@ -1,198 +1,127 @@
+import { StepsType } from "@/app/purchases";
+import { screen } from "@/constants/screen";
+import { useCart } from "@/hooks/cart";
+import { formatCentsToDollars } from "@/utils/formatCentsToDollars";
+import { Image } from "expo-image";
 import React from "react";
-import { H2, H3, Input, Label, Paragraph, ScrollView, YStack } from "tamagui";
+import {
+  Button,
+  H2,
+  H3,
+  H5,
+  Input,
+  Label,
+  Paragraph,
+  ScrollView,
+  Text,
+  XStack,
+  YStack,
+} from "tamagui";
 
-export function Step3() {
+interface Props {
+  handleGoToStep: (step: StepsType) => void;
+}
+
+export function Step3({ handleGoToStep }: Props) {
+  const { currentProduct } = useCart();
+
   return (
     <ScrollView showsVerticalScrollIndicator={false} mx={16} bg={"$white1"}>
       <H2 fontWeight={"bold"} ta={"left"} mt={16}>
-        Enter Contact{"\n"}Information
+        Review Your Information
       </H2>
 
       <Paragraph color={"$gray11"} mt={4} mb={16}>
-        To schedule your session, we need to collect some essential information.
+        Please review your details below. You can edit any section if needed. Payment information
+        will be entered on the next page.
       </Paragraph>
-      <YStack>
-        <H3 fontWeight={"bold"} ta={"left"}>
-          Personal Details
-        </H3>
-        <Paragraph color={"$gray11"} mb={8}>
-          Your artist will use these details to address you properly.
-        </Paragraph>
 
-        {/* // This could be componetinzed to recude amount of lines, but because it's a prototype I'll keep it here. */}
-        <YStack alignItems="flex-start" space="$2">
-          <Input
-            w={"100%"}
-            placeholder={`Your first name`}
-            h={80}
-            borderRadius={0}
-            bg={"$white1"}
-            borderColor={"$gray7"}
-            borderLeftColor={"$white1"}
-            borderRightColor={"$white1"}
-            fontSize={14}
-          />
-          <Label position="absolute" top={-2} left={16} fontSize={12} letterSpacing={1.6}>
-            FIRST NAME
-          </Label>
-        </YStack>
+      <Text fontWeight={"bold"} fontSize={16} letterSpacing={1.3} mt={32} mb={16}>
+        Tattoo Details
+      </Text>
 
-        <YStack alignItems="flex-start" space="$2">
-          <Input
-            w={"100%"}
-            placeholder={`Your last name`}
-            h={80}
-            borderRadius={0}
-            bg={"$white1"}
-            borderColor={"$gray7"}
-            borderLeftColor={"$white1"}
-            borderRightColor={"$white1"}
-            fontSize={14}
-          />
-          <Label position="absolute" top={-2} left={16} fontSize={12} letterSpacing={1.6}>
-            LAST NAME
-          </Label>
-        </YStack>
+      <XStack alignItems="flex-start">
+        <Image
+          source={{ uri: currentProduct?.imageUrl }}
+          contentFit="contain"
+          cachePolicy={"memory-disk"}
+          style={{
+            width: screen.width * 0.3,
+            height: screen.width * 0.3,
+            alignSelf: "center",
+          }}
+        />
 
-        <YStack alignItems="flex-start" space="$2">
-          <Input
-            w={"100%"}
-            placeholder={`Your last name`}
-            h={80}
-            borderRadius={0}
-            bg={"$white1"}
-            borderColor={"$gray7"}
-            borderLeftColor={"$white1"}
-            borderRightColor={"$white1"}
-            fontSize={14}
-          />
-          <Label position="absolute" top={-2} left={16} fontSize={12} letterSpacing={1.6}>
-            PRONOUNS (OPTIONAL)
-          </Label>
+        <YStack mb={16} ml={32} gap={4}>
+          <H5 ta={"left"}>{currentProduct?.title}</H5>
+          <Text ta={"left"} color={"$gray11"}>
+            BY {currentProduct?.artist.name.toUpperCase()}
+          </Text>
+          <Text ta={"left"} color={"$gray11"}>
+            {formatCentsToDollars(currentProduct?.priceInCents ?? 0)}
+          </Text>
         </YStack>
+      </XStack>
+
+      <Text fontWeight={"bold"} fontSize={16} letterSpacing={1.3} mt={32} mb={16}>
+        Contact Information
+      </Text>
+
+      <YStack gap={8}>
+        <XStack alignItems="flex-start" space="$2">
+          <Text fontSize={12} width={"50%"} color={"$gray10"}>
+            NAME
+          </Text>
+          <Text>SAYMON ARAÚJO</Text>
+        </XStack>
+
+        <XStack alignItems="flex-start" space="$2">
+          <Text fontSize={12} width={"50%"} color={"$gray10"}>
+            PHONE
+          </Text>
+          <Text>+5531995408466</Text>
+        </XStack>
+
+        <XStack alignItems="flex-start" space="$2">
+          <Text fontSize={12} width={"50%"} color={"$gray10"}>
+            LOCATION
+          </Text>
+          <Text fontSize={12} width={"50%"}>
+            {"Belo Horizonte, Minas Gerais, BRA".toUpperCase()}
+          </Text>
+        </XStack>
+
+        <Button
+          borderRadius={0}
+          borderColor={"$gray8"}
+          borderWidth={1}
+          mt={8}
+          onPress={() => handleGoToStep(1)}
+        >
+          EDIT
+        </Button>
       </YStack>
 
-      <YStack mt={16}>
-        <H3 fontWeight={"bold"} ta={"left"}>
-          Phone Number
-        </H3>
-        <Paragraph color={"$gray11"} mb={8}>
-          The artist may use this number to contact you for anything urgent regarding your
-          appointment.
-        </Paragraph>
+      <Text fontWeight={"bold"} fontSize={16} letterSpacing={1.3} mt={32} mb={16}>
+        Requested date
+      </Text>
 
-        {/* // Didn't implement the select to gain some time. */}
-        <YStack alignItems="flex-start" space="$2">
-          <Input
-            w={"100%"}
-            placeholder={`Your country code`}
-            h={80}
-            borderRadius={0}
-            bg={"$white1"}
-            borderColor={"$gray7"}
-            borderLeftColor={"$white1"}
-            borderRightColor={"$white1"}
-            fontSize={14}
-          />
-          <Label position="absolute" top={-2} left={16} fontSize={12} letterSpacing={1.6}>
-            COUNTRY CODE
-          </Label>
-        </YStack>
+      <YStack gap={8} mb={32}>
+        <XStack alignItems="flex-start" space="$2">
+          <Text fontSize={12} letterSpacing={1.2}>
+            OCTOBER 4, 2024
+          </Text>
+        </XStack>
 
-        {/* // A input mask is necessary here as well */}
-        <YStack alignItems="flex-start" space="$2">
-          <Input
-            w={"100%"}
-            placeholder={`Your last name`}
-            h={80}
-            borderRadius={0}
-            bg={"$white1"}
-            borderColor={"$gray7"}
-            borderLeftColor={"$white1"}
-            borderRightColor={"$white1"}
-            fontSize={14}
-          />
-          <Label position="absolute" top={-2} left={16} fontSize={12} letterSpacing={1.6}>
-            PHONE NUMBER
-          </Label>
-        </YStack>
-
-        <YStack alignItems="flex-start" space="$2">
-          <Input
-            w={"100%"}
-            placeholder={`Your last name`}
-            h={80}
-            borderRadius={0}
-            bg={"$white1"}
-            borderColor={"$gray7"}
-            borderLeftColor={"$white1"}
-            borderRightColor={"$white1"}
-            fontSize={14}
-          />
-          <Label position="absolute" top={-2} left={16} fontSize={12} letterSpacing={1.6}>
-            PRONOUNS (OPTIONAL)
-          </Label>
-        </YStack>
-      </YStack>
-
-      <YStack mt={16} mb={32}>
-        <H3 fontWeight={"bold"} ta={"left"}>
-          Your Location
-        </H3>
-        <Paragraph color={"$gray11"} mb={8}>
-          This helps your artist understand if you are traveling a long distance for your session.
-        </Paragraph>
-
-        <YStack alignItems="flex-start" space="$2">
-          <Input
-            w={"100%"}
-            placeholder={`Your Country`}
-            h={80}
-            borderRadius={0}
-            bg={"$white1"}
-            borderColor={"$gray7"}
-            borderLeftColor={"$white1"}
-            borderRightColor={"$white1"}
-            fontSize={14}
-          />
-          <Label position="absolute" top={-2} left={16} fontSize={12} letterSpacing={1.6}>
-            COUNTRY
-          </Label>
-        </YStack>
-
-        <YStack alignItems="flex-start" space="$2">
-          <Input
-            w={"100%"}
-            placeholder={`Your State`}
-            h={80}
-            borderRadius={0}
-            bg={"$white1"}
-            borderColor={"$gray7"}
-            borderLeftColor={"$white1"}
-            borderRightColor={"$white1"}
-            fontSize={14}
-          />
-          <Label position="absolute" top={-2} left={16} fontSize={12} letterSpacing={1.6}>
-            STATE
-          </Label>
-        </YStack>
-
-        <YStack alignItems="flex-start" space="$2">
-          <Input
-            w={"100%"}
-            placeholder={`Your City`}
-            h={80}
-            borderRadius={0}
-            bg={"$white1"}
-            borderColor={"$gray7"}
-            borderLeftColor={"$white1"}
-            borderRightColor={"$white1"}
-            fontSize={14}
-          />
-          <Label position="absolute" top={-2} left={16} fontSize={12} letterSpacing={1.6}>
-            CITY
-          </Label>
-        </YStack>
+        <Button
+          borderRadius={0}
+          borderColor={"$gray8"}
+          borderWidth={1}
+          mt={8}
+          onPress={() => handleGoToStep(2)}
+        >
+          EDIT
+        </Button>
       </YStack>
     </ScrollView>
   );

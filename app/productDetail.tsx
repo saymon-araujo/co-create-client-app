@@ -9,7 +9,7 @@ import { Image } from "expo-image";
 import { useRouter, useLocalSearchParams } from "expo-router";
 import { H1, H4, Heading, ScrollView, Text, View, XStack, YStack } from "tamagui";
 import { Instagram } from "lucide-react-native";
-import { TouchableOpacity } from "react-native";
+import { Alert, Linking, TouchableOpacity } from "react-native";
 
 export default function ProductDetailScreen() {
   const { currentProduct } = useCart();
@@ -20,13 +20,26 @@ export default function ProductDetailScreen() {
   const [productInfo, setProductInfo] = useState<ProductProps | undefined>(currentProduct);
 
   function handleStartCheckout() {
-    setIsLoading(true);
+    // setIsLoading(true); // uncomment this line when implementing the checkout logic
     router.push({ pathname: "/purchases", params: { checkoutId: "mock-id" } });
     console.log("Starting checkout");
   }
 
   function handleOpenArtistInstragam() {
-    console.log("Opening artist Instagram");
+    if (productInfo?.artist.instagram) {
+      const instagramUrl = `https://www.instagram.com/${productInfo.artist.instagram}/`;
+      Linking.canOpenURL(instagramUrl)
+        .then((supported) => {
+          if (supported) {
+            Linking.openURL(instagramUrl);
+          } else {
+            Alert.alert("Error", "Instagram app is not installed or the URL is not supported.");
+          }
+        })
+        .catch((err) => console.error("An error occurred while opening Instagram:", err));
+    } else {
+      Alert.alert("Error", "Instagram handle not available for this artist.");
+    }
   }
 
   useEffect(() => {

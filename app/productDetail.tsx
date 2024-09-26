@@ -1,6 +1,7 @@
+import { Header } from "@/components";
 import { useCart } from "@/hooks/cart";
 import { useLocalSearchParams, useRouter } from "expo-router";
-import { Text, View } from "react-native";
+import { Text, View } from "tamagui";
 
 export default function ProductDetailScreen() {
   const { currentProduct } = useCart();
@@ -10,7 +11,8 @@ export default function ProductDetailScreen() {
   console.log(currentProduct);
 
   return (
-    <View>
+    <View flex={1}>
+      <Header goBack />
       <Text>Product ID: {"123"}</Text>
     </View>
   );

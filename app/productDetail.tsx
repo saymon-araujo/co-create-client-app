@@ -6,13 +6,14 @@ import { screen } from "@/constants/screen";
 import { useCart } from "@/hooks/cart";
 import { formatCentsToDollars } from "@/utils/formatCentsToDollars";
 import { Image } from "expo-image";
-import { useLocalSearchParams } from "expo-router";
-import { H1, H4, Heading, ScrollView, Separator, Text, View, XStack, YStack } from "tamagui";
+import { useRouter, useLocalSearchParams } from "expo-router";
+import { H1, H4, Heading, ScrollView, Text, View, XStack, YStack } from "tamagui";
 import { Instagram } from "lucide-react-native";
 import { TouchableOpacity } from "react-native";
 
 export default function ProductDetailScreen() {
   const { currentProduct } = useCart();
+  const router = useRouter();
   const { productId } = useLocalSearchParams();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -20,6 +21,7 @@ export default function ProductDetailScreen() {
 
   function handleStartCheckout() {
     setIsLoading(true);
+    router.push({ pathname: "/purchases", params: { checkoutId: "mock-id" } });
     console.log("Starting checkout");
   }
 

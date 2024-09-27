@@ -38,8 +38,6 @@
 - Expo router: For file-based navigation, allowing for a simplified and scalable routing system across the project. This approach makes it easier to handle routes in a large app with multiple views and features, such as artist portfolios or booking screens.
 
 
-⚠️ **Note:** This code was not designed with scalability in mind. To speed up the development process, I made decisions such as not componentizing, using inline styles, skipping code reviews, and refactoring.
-
 <br>
 
 # Features
